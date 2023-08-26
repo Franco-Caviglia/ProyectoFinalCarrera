@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  db-clients:
+    container_name: db-clients-vet
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: vet-clients
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bhalta
+    ports:
+      - 5433:5433
+    expose:
+      - 5433
+    command: -p 5433
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 512M
